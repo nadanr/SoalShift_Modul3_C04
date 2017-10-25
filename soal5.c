@@ -27,5 +27,21 @@ int hitungIfah( *argv ){
 int hitungFina( *argv ){
     int countFi=0;
     char simpan2[1000];
-        
+    
+    while(status!=1){
+    
+    }
+    
+    inn = fopen("Novel.txt", "r");
+    
+    while(fgets(simpan2, 1000, inn)!=NULL){
+        if(strstr(simpan2, "Fina")){
+            countFi++;        
+        }    
+    }
+    printf("Fina = %d\n", countFi);
+}
+
+int main( void *arg ){
+    
 }
