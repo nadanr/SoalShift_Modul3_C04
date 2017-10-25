@@ -4,17 +4,20 @@
 #include <pthread.h>
 #include <string.h>
  
-pthread_t tid1;
-pthread_t tid2;
-int status;
-char simpan[2000];
-char simpan2[2000];
-FILE *in, *inn;
+//pthread_t tid1;
+//pthread_t tid2;
+//int status;
+
+//char simpan2[2000];
+FILE *in;
 
 void* hitung( void *arg ){
     int countIf=0;
-    int count=0, j, i, f, a, h, space;
-    status = 0;
+    int count=0, j, i, wordLen;
+    int found;
+    char* cari=(char *) arg;
+    //status = 0;
+    char simpan[1500];
     //int line_num = 1;
 
     in=fopen("/home/nadanr/SISOP/Novel.txt", "r");
@@ -52,6 +55,7 @@ void* hitung( void *arg ){
             }
         }    
     }
+    fclose(in);
     printf("%s = %d\n", cari, countIf);
     //return;
 }
@@ -65,10 +69,10 @@ void* hitung( void *arg ){
         line_num ++;
     }*/
     //status = 1;
-    fclose(in);
+    
     //printf("Ifah = %d\n", countIf);
     
-}
+
 
 /*void* hitungFina( void *arg ){
     int countFi=0;
