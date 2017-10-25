@@ -30,8 +30,8 @@ void* hitungIfah( void *arg ){
         f = (simpan[j+1] == 'f' || simpan[j+1] == 'F' );
         a = (simpan[j+2] == 'a' || simpan[j+2] == 'A' );
         h = (simpan[j+3] == 'h' || simpan[j+3] == 'H' );
-        space = (simpan[j+4] == ' ' || simpan[j+4] == '\0');
-        if((i && f && a && h && space ) ==1){
+        //space = (simpan[j+4] == ' ' || simpan[j+4] == '\0');
+        if((i && f && a && h ) ==1){
             countIf++;
         }
     }
@@ -65,15 +65,15 @@ void* hitungFina( void *arg ){
         while(simpan2[count]!='\0'){
         count++;
     }
-    printf("count = %d\n\n", count);
+    //printf("count = %d\n\n", count);
 
     for(j=0; j<=count-4; j++){
         f = (simpan2[j] == 'f' || simpan2[j] == 'F' );
         i = (simpan2[j+1] == 'i' || simpan2[j+1] == 'I' );
         n = (simpan2[j+2] == 'n' || simpan2[j+2] == 'N' );
         a = (simpan2[j+3] == 'a' || simpan2[j+3] == 'A' );
-        space = (simpan2[j+4] == ' ' || simpan2[j+4] == '\0');
-        if((f && i && n && a && space )==1){
+        //space = (simpan2[j+4] == ' ' || simpan2[j+4] == '\0');
+        if((f && i && n && a )==1){
             countFi++;
         }
     }
