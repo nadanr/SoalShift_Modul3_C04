@@ -2,18 +2,20 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <pthread.h>
+#include <string.h>
  
 pthread_t tid1;
 pthread_t tid2;
 int status;
-
+char simpan[1000];
+char simpan2[1000];
 FILE *in, *inn;
-int hitungIfah( *argv ){
+
+void* hitungIfah( void *arg ){
     int countIf=0;
-    char simpan[1000];
     status = 0;
 
-    in=fopen("Novel.txt", "r");
+    in=fopen("/home/nadanr/SISOP/Novel.txt", "r");
     
     while(fgets(simpan, 1000, in)!=NULL){
         if(strstr(simpan,"Ifah")){
@@ -21,27 +23,28 @@ int hitungIfah( *argv ){
         }
     }
     status = 1;
-    printf("Ifah= %d\n", countIf);
     fclose(in);
+    printf("Ifah = %d\n", countIf);
+    
 }
 
-int hitungFina( *argv ){
+void* hitungFina( void *arg ){
     int countFi=0;
-    char simpan2[1000];
     
     while(status!=1){
     
     }
     
-    inn = fopen("Novel.txt", "r");
+    inn = fopen("/home/nadanr/SISOP/Novel.txt", "r");
     
     while(fgets(simpan2, 1000, inn)!=NULL){
         if(strstr(simpan2, "Fina")){
             countFi++;        
         }    
     }
-    printf("Fina = %d\n", countFi);
     fclose(inn);
+    printf("Fina = %d\n", countFi);
+    
 }
 
 int main( void *arg ){
