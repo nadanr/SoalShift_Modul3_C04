@@ -22,6 +22,7 @@ int hitungIfah( *argv ){
     }
     status = 1;
     printf("Ifah= %d\n", countIf);
+    fclose(in);
 }
 
 int hitungFina( *argv ){
@@ -40,8 +41,15 @@ int hitungFina( *argv ){
         }    
     }
     printf("Fina = %d\n", countFi);
+    fclose(inn);
 }
 
 int main( void *arg ){
-    
+    pthread_create(&(tid1), NULL, &hitungFina, NULL);
+    pthread_create(&(tid2), NULL, &hitungIfah, NULL);
+
+    pthread_join(tid1, NULL);
+    pthread_join(tid2, NULL);
+
+    return 0;
 }
