@@ -11,7 +11,7 @@ char simpan[2000];
 char simpan2[2000];
 FILE *in, *inn;
 
-void* hitungIfah( void *arg ){
+void* hitung( void *arg ){
     int countIf=0;
     int count=0, j, i, f, a, h, space;
     status = 0;
@@ -25,7 +25,7 @@ void* hitungIfah( void *arg ){
     }
     //printf("count = %d\n\n", count);
 
-    for(j=0; j<=count-4; j++){
+    /*for(j=0; j<=count-4; j++){
         i = (simpan[j] == 'i' || simpan[j] == 'I' );
         f = (simpan[j+1] == 'f' || simpan[j+1] == 'F' );
         a = (simpan[j+2] == 'a' || simpan[j+2] == 'A' );
@@ -34,7 +34,26 @@ void* hitungIfah( void *arg ){
         if((i && f && a && h ) ==1){
             countIf++;
         }
+    }*/
+     wordLen = strlen(cari);//find length of the word
+
+        for(i=0; i<count-wordLen; i++){
+        
+            found = 1;
+            for(j=0; j<wordLen; j++){
+                if(simpan[i + j] != cari[j]){
+                    found = 0;
+                    break;
+                }
+            }
+            
+            if(found == 1){
+                countIf++;
+            }
+        }    
     }
+    printf("%s = %d\n", cari, countIf);
+    //return;
 }
     
     /*while(fgets(simpan, 1000, in)!=NULL){
@@ -45,13 +64,13 @@ void* hitungIfah( void *arg ){
         }
         line_num ++;
     }*/
-    status = 1;
+    //status = 1;
     fclose(in);
-    printf("Ifah = %d\n", countIf);
+    //printf("Ifah = %d\n", countIf);
     
 }
 
-void* hitungFina( void *arg ){
+/*void* hitungFina( void *arg ){
     int countFi=0;
     int count=0;
     int j, f, i, n, a, space;
@@ -83,17 +102,18 @@ void* hitungFina( void *arg ){
             countFi++;        
         }    
     }*/
-    fclose(inn);
+    /*fclose(inn);
     printf("Fina = %d\n", countFi);
     
-}
+}*/
 
-int main( void *arg ){
-    pthread_create(&(tid1), NULL, &hitungFina, NULL);
-    pthread_create(&(tid2), NULL, &hitungIfah, NULL);
-
-    pthread_join(tid1, NULL);
-    pthread_join(tid2, NULL);
-
-    return 0;
+int main(int j, char **arg)
+{
+    pthread_t t[j];
+    int i;
+    i = j;
+    while(--j){
+        pthread_create(&t[j], NULL, &hitung, arg[j]);
+        pthread_join(t[j], NULL);    
+    }
 }
