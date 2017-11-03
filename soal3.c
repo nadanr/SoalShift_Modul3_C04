@@ -12,3 +12,10 @@ void* statusKep(){
     }
 }
 
+void* statusLoh(){
+    while(1){
+        sleep(10);
+        lohan-=15;
+    }
+}
+
