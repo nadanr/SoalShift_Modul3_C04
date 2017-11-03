@@ -41,6 +41,7 @@ int main(void){
     pthread_create(&(tid[1]), NULL, &statusLoh, NULL);
     
     while(1){
+        system("clear");
         printf("Macam-macam hewan di kolam Aidil");
         printf("\nStatus Kepiting = %d\n",kepiting);
         printf("Status Lohan = %d\n",lohan);
@@ -50,7 +51,7 @@ int main(void){
         }
         pthread_create(&(tid[3]), NULL, &beriMakan, NULL);
         
-        sleep(2);//tunggu 2 detik sebelum kasih makan lagi
+        sleep(1);//tunggu 1 detik sampe status diupdate
     }
     
 }
